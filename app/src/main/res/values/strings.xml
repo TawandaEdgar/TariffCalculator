@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Tariff Calculator</string>
+    <string name="nonfiguretext">Please enter the amt in figures</string>
+</resources>
