@@ -8,8 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.math.BigDecimal;
-
 public class CashOutActivity extends AppCompatActivity {
 
     private TextView displayText;
@@ -17,8 +15,7 @@ public class CashOutActivity extends AppCompatActivity {
     private Button calcCashOutButton;
     public double tariff = 0;
     public double amount;
-    public Boolean booleanData ;
-    public String protein;
+    public String amtInTextFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +31,9 @@ public class CashOutActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                protein = amountEditText.getText().toString();
+                amtInTextFormat = amountEditText.getText().toString();
                 try {
-                    amount = Double.valueOf(protein);
+                    amount = Double.valueOf(amtInTextFormat);
                 } catch (NumberFormatException e) {
                     amount = 0;
                 }
@@ -106,15 +103,6 @@ public class CashOutActivity extends AppCompatActivity {
 
     public static boolean isBetween(double x, double lower, double upper) {
         return lower <= x && x <= upper;
-    }
-
-    public static boolean isNumeric(String amount) {
-        try {
-            BigDecimal n = new BigDecimal(amount);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
     }
 
 }

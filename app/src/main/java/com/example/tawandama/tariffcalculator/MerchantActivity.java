@@ -8,16 +8,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.math.BigDecimal;
-
 public class MerchantActivity extends AppCompatActivity {
     private TextView displayText;
     private EditText amountEditText;
     private Button calcMerchCharge;
     public double tariff = 0;
     public double amount;
-    public Boolean booleanData ;
-    public String protein;
+    public String amtInTextFormat;
     public double oneToFifty;
 
     @Override
@@ -33,9 +30,9 @@ public class MerchantActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                protein = amountEditText.getText().toString();
+                amtInTextFormat = amountEditText.getText().toString();
                 try {
-                    amount = Double.valueOf(protein);
+                    amount = Double.valueOf(amtInTextFormat);
                 } catch (NumberFormatException e) {
                     amount = 0;
                 }
@@ -60,7 +57,7 @@ public class MerchantActivity extends AppCompatActivity {
     }
 
     private void result() {
-        Toast.makeText(getApplicationContext(), "You want to do a Cash-Out of $"+amount+" . You will be charged $"+tariff,
+        Toast.makeText(getApplicationContext(), "You want to do a Merchant Transaction of $"+amount+" . You will be charged $"+tariff,
                 Toast.LENGTH_LONG).show();
         amountEditText.setText(null);
     }
@@ -68,13 +65,13 @@ public class MerchantActivity extends AppCompatActivity {
     private double calculate(double amt) {
 
         if (isBetween(amt, 50.01, 75)) {
-            tariff = 0.0;
+            tariff = 1.25;
         } else if (isBetween(amt, 75.01, 100)) {
-            tariff = 0.17;
+            tariff = 1.45;
         } else if (isBetween(amt, 100.01, 150)) {
-            tariff = 0.26;
+            tariff = 1.50;
         } else if (isBetween(amt, 150.01, 500)) {
-            tariff = 0.52;
+            tariff = 1.50;
         }  else {
             tariff=0.0;
         }
@@ -92,12 +89,4 @@ public class MerchantActivity extends AppCompatActivity {
         return lower <= x && x <= upper;
     }
 
-    public static boolean isNumeric(String amount) {
-        try {
-            BigDecimal n = new BigDecimal(amount);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }

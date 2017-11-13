@@ -8,8 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.math.BigDecimal;
-
 
 public class SendActivity extends AppCompatActivity {
 
@@ -19,7 +17,7 @@ public class SendActivity extends AppCompatActivity {
     public double tariff = 0;
     public double amount;
     public Boolean booleanData ;
-    public String protein;
+    public String amtInTextFormat;
 
 
     @Override
@@ -36,9 +34,9 @@ public class SendActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                protein = amountEditText.getText().toString();
+                amtInTextFormat = amountEditText.getText().toString();
                 try {
-                    amount = Double.valueOf(protein);
+                    amount = Double.valueOf(amtInTextFormat);
                 } catch (NumberFormatException e) {
                     amount = 0;
                 }
@@ -56,7 +54,7 @@ public class SendActivity extends AppCompatActivity {
     }
 
     private void result() {
-        Toast.makeText(getApplicationContext(), "You want to send $"+amount+" . You will be charged $"+tariff,
+        Toast.makeText(getApplicationContext(), "You want to send to a registered customer an amount of $"+amount+" . You will be charged $"+tariff,
                 Toast.LENGTH_LONG).show();
         amountEditText.setText(null);
     }
@@ -111,12 +109,4 @@ public class SendActivity extends AppCompatActivity {
         return lower <= x && x <= upper;
     }
 
-    public static boolean isNumeric(String amount) {
-        try {
-            BigDecimal n = new BigDecimal(amount);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }

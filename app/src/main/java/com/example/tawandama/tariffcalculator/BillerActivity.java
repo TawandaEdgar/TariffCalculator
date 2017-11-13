@@ -17,8 +17,7 @@ public class BillerActivity extends AppCompatActivity {
     private Button calcBiller;
     public double tariff = 0;
     public double amount;
-    public Boolean booleanData ;
-    public String protein;
+    public String amtInTextFormat;
 
 
     @Override
@@ -35,9 +34,9 @@ public class BillerActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                protein = amountEditText.getText().toString();
+                amtInTextFormat = amountEditText.getText().toString();
                 try {
-                    amount = Double.valueOf(protein);
+                    amount = Double.valueOf(amtInTextFormat);
                 } catch (NumberFormatException e) {
                     amount = 0;
                 }
@@ -55,7 +54,7 @@ public class BillerActivity extends AppCompatActivity {
     }
 
     private void result() {
-        Toast.makeText(getApplicationContext(), "You want to send $"+amount+" . You will be charged $"+tariff,
+        Toast.makeText(getApplicationContext(), "You want to do a biller payment of $"+amount+" . You will be charged $"+tariff,
                 Toast.LENGTH_LONG).show();
         amountEditText.setText(null);
     }
@@ -103,12 +102,4 @@ public class BillerActivity extends AppCompatActivity {
         return lower <= x && x <= upper;
     }
 
-    public static boolean isNumeric(String amount) {
-        try {
-            BigDecimal n = new BigDecimal(amount);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }
