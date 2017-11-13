@@ -36,13 +36,17 @@
             android:name=".HistoryActivity"
             android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".CashOutActivity">
+        <activity android:name=".CashOutActivity"
+                  android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".MerchantActivity">
+        <activity android:name=".MerchantActivity"
+                  android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".PayrollActivity">
+        <activity android:name=".PayrollActivity"
+                  android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".BillerActivity">
+        <activity android:name=".BillerActivity"
+                  android:parentActivityName=".MainActivity">
         </activity>
     </application>
 
